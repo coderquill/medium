@@ -1,1 +1,31 @@
 
+ curl -X PUT "localhost:9200/index_name?pretty" -H 'Content-Type: application/json' -d'
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "analyzer_name": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": [
+            "filter_name"
+          ]
+        }
+      },
+      "filter": {
+        "filter_name": {
+          "type": "stop"
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "field_name": {
+        "type": "text",
+        "analyzer": "analyzer_name"
+      }
+    }
+  }
+}
+'
